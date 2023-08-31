@@ -10,7 +10,8 @@
 
 .start-game-field {
     margin: 0px;
-    height: 900px;
+    // height: 900px;
+    height: 100vh;
     background-color: #004980;
     display: flex;
     flex-direction: column;
@@ -19,8 +20,11 @@
 }
 .game-field {
     margin: 0px;
-    height: 774px;
-    width: 1024px;
+    // height: 774px;
+    // width: 1024px;
+    height: 100vh;
+    width: 100vw;
+
     background-color: #004980;
     // display: flex;
     // flex-direction: column;
@@ -174,13 +178,13 @@
 
 }
 
-.card-close {
-    display: grid;
-    grid-template-columns: repeat(9, 106px);
-    justify-items: end;
-    justify-content: center;
-    // height: 400px;
-}
+// .card-close {
+//     display: grid;
+//     grid-template-columns: repeat(9, 106px);
+//     justify-items: end;
+//     justify-content: center;
+//     // height: 400px;
+// }
 
 
 .displayNone {
@@ -195,8 +199,17 @@
     margin: 6px;
     border-radius: 4px;
     background-color: #c2f5ff;
-    background-image: url("./img/card.png");
+    position: relative;
+    z-index: 999;
+    background-image: url("./img/mask.svg");
+    
 }
+.img {
+    position: relative;
+    z-index: -999; 
+}
+
+
 .card-open {
     width: 95px;
     height: 133px;
@@ -209,7 +222,7 @@
 }
 
 .card-heder {
-    display: flex;
+    // display: flex;
     width: 11px;
     height: 21px;
     padding: 4px;
@@ -221,6 +234,7 @@
     background-image: url("./img/small_Bubn.svg");
     margin-left: 5px;
     margin-top: 4px;
+    
 }
 
 .card-middle--iconBubn{

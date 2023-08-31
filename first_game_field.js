@@ -1,3 +1,5 @@
+// import { library } from "webpack"
+
 // Отрисовываем заголовок игрового поля
 export const renderHeder = () => {
     return `
@@ -14,26 +16,20 @@ export const renderHeder = () => {
                 <button class="new_Game-button">Начать заново</button>
             </div>
             <div class="card-forView"></div> 
-            <div class="card-close"></div> 
-             
-</div>`
+            
+            </div>`
 }
 
-export const mineGameField = ({
-    difficultLevel,
-    totalRandCards,
-    totalRandSuits,
-    index,
-}) => {
+export const mineGameField = ({ difficultLevel }) => {
     let playCards = 0
     const arrCard = ["A", "K", "Q", "J", "10", "9", "8", "7", "6"]
     const arrSuit = ["Piki", "Cherv", "Bubn", "Krest"]
     const cardsField = []
     let randCard = []
     let randSuit = []
-    // let totalRandCards = []
-    // let totalRandSuits = []
-    // let index = []
+    let totalRandCards = []
+    let totalRandSuits = []
+    let index = []
     let cardIcon = ""
 
     if (difficultLevel === "1") {
@@ -64,9 +60,9 @@ export const mineGameField = ({
     }
     index = index.sort(() => Math.random() - 0.5)
 
-    console.log(totalRandCards)
-    console.log(totalRandSuits)
-    console.log(index)
+    // console.log(totalRandCards)
+    // console.log(totalRandSuits)
+    // console.log(index)
 
     // Вывод карт на просмотр
     for (let i = 0; i < playCards * 2; i++) {
@@ -84,12 +80,19 @@ export const mineGameField = ({
         }
 
         let cardElement = `
-                <div class="card-open" id="${index[i]}">
-                    <div class="card-heder">${totalRandCards[index[i]]}</div>
-                    <div class="card-heder--${cardIcon}"></div>
-                    <div class="card-middle--${cardIcon}"></div>
-                    <div class="card-down--${cardIcon}"></div>
-                    <div class="card-down">${totalRandCards[index[i]]}</div>
+                <div class="card-open" data-id="${index[i]}" data-card="${
+                    totalRandCards[index[i]]
+                }" data-icon="${cardIcon}" >
+                        <div class="cardIn card-heder">${
+                            totalRandCards[index[i]]
+                        }</div>
+                        <div class="cardIn card-heder--${cardIcon} "></div>
+                        <div class="cardIn card-middle--${cardIcon} "></div>
+                        <div class="cardIn card-down--${cardIcon} "></div>
+                        <div class="cardIn card-down ">${
+                            totalRandCards[index[i]]
+                        }</div>
+                
                 </div>`
 
         cardsField.push(cardElement)
@@ -100,43 +103,147 @@ export const mineGameField = ({
         fieldElement.innerHTML = fieldElement.innerHTML + i
     }
     console.log(fieldElement)
-    return [{ difficultLevel, totalRandCards, totalRandSuits, index }]
-}
-
-export const userGameField = ({ difficultLevel, index }) => {
-    let playCards = 0
-    const cardsCloseField = []
-    if (difficultLevel === "1") {
-        playCards = 3
-    }
-    if (difficultLevel === "2") {
-        playCards = 6
-    }
-    if (difficultLevel === "3") {
-        playCards = 9
-    }
-
     console.log({ index })
-    // const fieldElement2 = document.querySelector(".card-close")
+    // Вызвать функцию которая закроет карты через 5 секунд
 
-    for (let i = 0; i < playCards * 2; i++) {
-        let cardCloseElement = `<div class="card" id="${index[i]}"></div>`
-        cardsCloseField.push(cardCloseElement)
-    }
-
-    const fieldElement2 = document.querySelector(".card-close")
-    fieldElement2.innerHTML = ``
-
-    // Убираем div с показанными картами
-
-    const cardOpenElement = document.querySelector(".card-forView")
-    cardOpenElement.classList.add("displayNone")
-    // Убрали
-
-    for (let i of cardsCloseField) {
-        fieldElement2.innerHTML = fieldElement2.innerHTML + i
-    }
-    console.log(fieldElement2)
-
-    
+    setTimeout(closeCardFunction, 3000)
 }
+
+// Функция закрытия карт
+const closeCardFunction = () => {
+    const cardElements = document.querySelectorAll(".card-open")
+    const cardInElements = document.querySelectorAll(".cardIn")
+
+    for (const cardInElement of cardInElements) {
+        cardInElement.classList.add("displayNone")
+    }
+
+    for (const cardElement of cardElements) {
+        cardElement.classList.add("card")
+        cardElement.classList.remove("card-open")
+    }
+
+    gamePlayFunction()
+}
+
+const gamePlayFunction = () => {
+    // let openCardCount = 0;
+    const cardElements = document.querySelectorAll(".card")
+    console.log({ cardElements })
+    for (const cardElement of cardElements) {
+        cardElement.addEventListener("click", () => {
+            // const cardChildElements = document.querySelectorAll(".cardIn").children
+            const cardChildElements = cardElement.children
+            console.log({ cardChildElements })
+            for (const cardChildElement of cardChildElements) {
+                cardChildElement.classList.remove("displayNone")
+            }
+            cardElement.classList.add("card-open")
+        })
+    }
+}
+
+// export const userGameField = ({ difficultLevel, index }) => {
+//     let playCards = 0
+//     const cardsCloseField = []
+//     if (difficultLevel === "1") {
+//         playCards = 3
+//     }
+//     if (difficultLevel === "2") {
+//         playCards = 6
+//     }
+//     if (difficultLevel === "3") {
+//         playCards = 9
+//     }
+//     for (let i = 0; i < playCards * 2; i++) {
+//         let cardCloseElement = `<div class="card" data-id="${index[i]}"></div>`
+//         cardsCloseField.push(cardCloseElement)
+//     }
+
+//     const fieldElement2 = document.querySelector(".card-close")
+//     fieldElement2.innerHTML = ``
+
+//     // Убираем div с показанными картами
+//     const cardOpenElement = document.querySelector(".card-forView")
+//     cardOpenElement.classList.add("displayNone")
+//     // Убрали
+
+//     for (let i of cardsCloseField) {
+//         fieldElement2.innerHTML = fieldElement2.innerHTML + i
+//     }
+//     console.log(fieldElement2)
+
+//     gamePlayFunction({ index })
+// }
+
+// const gamePlayFunction = () => {
+// // let openCardCount = 0;
+// const cardElements3 = document.querySelectorAll(".card-choice")
+// console.log({cardElements3});
+
+// cardElements3.addEventListener("click", () => {
+
+//        alert("переворачиваем карту");
+
+// })
+
+// }
+
+// export const gamePlayFunction = ({ index }) => {
+//     let totalRandCards2 = ["A", "9", "Q", "A", "9", "Q"]
+//     let totalRandSuits2 = ["Krest", "Bubn", "Piki", "Krest", "Bubn", "Piki"]
+//     let cardElement = ``
+//     let cardIcon = ""
+//     const cardsField = []
+//     const clickCardElements = document.querySelectorAll(".card")
+//     for (const clickCardElement of clickCardElements) {
+//         clickCardElement.addEventListener("click", () => {
+//             // Вызываем функцию отрисовки открытия карты по id
+//             let cardId = clickCardElement.dataset.id
+//             console.log(cardId)
+
+//             //    пускаем цикл по index
+//             for (let i = 0; i < index.length; i++) {
+//                 if (totalRandSuits2[index[i]] === "Piki") {
+//                     cardIcon = "iconPiki"
+//                 }
+//                 if (totalRandSuits2[index[i]] === "Cherv") {
+//                     cardIcon = "iconCherv"
+//                 }
+//                 if (totalRandSuits2[index[i]] === "Bubn") {
+//                     cardIcon = "iconBubn"
+//                 }
+//                 if (totalRandSuits2[index[i]] === "Krest") {
+//                     cardIcon = "iconKrest"
+//                 }
+//                 if (cardId == index[i]) {
+//                     cardElement = `
+//                     <div class="card-open">
+//                         <div class="card-heder">${
+//                             totalRandCards2[index[i]]
+//                         }</div>
+//                         <div class="card-heder--${cardIcon}"></div>
+//                         <div class="card-middle--${cardIcon}"></div>
+//                         <div class="card-down--${cardIcon}"></div>
+//                         <div class="card-down">${
+//                             totalRandCards2[index[i]]
+//                         }</div>
+//                     </div>`
+//                 } else {
+//                     cardElement = `<div class="card" data-id="${index[i]}"></div>`
+//                 }
+
+//                 cardsField.push(cardElement)
+//             }
+//             console.log(cardsField)
+
+//             const fieldElement = document.querySelector(".card-close")
+//             console.log(fieldElement)
+
+//             for (let i of cardsField) {
+//                 fieldElement.innerHTML = fieldElement.innerHTML + i
+//             }
+//             console.log(fieldElement.innerHTML)
+//         })
+//     }
+// }
