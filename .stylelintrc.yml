@@ -1,0 +1,17 @@
+extends:
+    [
+        'stylelint-config-standard',
+        'stylelint-config-prettier',
+        'stylelint-prettier/recommended',
+    ]
+
+    {
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    // recommended rules
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+  }
+}
