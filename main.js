@@ -1,8 +1,12 @@
-import { renderHeder, mineGameField, userGameField } from "./first_game_field.js"
-
-
-;("use strict")
+import {
+    renderHeder,
+    mineGameField,
+    userGameField,
+} from "./first_game_field.js"
 let difficultLevel = 0
+let totalRandCards = []
+    let totalRandSuits = []
+    let index = []
 // Функция выделения кнопки уровня сложности
 
 const diffLevelButtonColor = () => {
@@ -33,33 +37,21 @@ diffLevelButtonColor()
 // Функция старта игры
 
 const startGame = () => {
-    const startElement = document.querySelector(".start-box--button");
-    const fieldElement = document.querySelector(".start-game-field");
+    const startElement = document.querySelector(".start-box--button")
+    const fieldElement = document.querySelector(".start-game-field")
     startElement.addEventListener("click", () => {
         if (difficultLevel === 0) {
-            return alert("Выберите сложность игры");
+            return alert("Выберите сложность игры")
         } else {
-            // let startTime = new Date();
+            fieldElement.innerHTML = renderHeder()
+            fieldElement.classList.remove("start-game-field")
+            mineGameField({difficultLevel, totalRandCards, totalRandSuits, index})
+            
+            console.log(totalRandSuits)
 
-            // <div >
-            //   Игра началась!
-            //   Время начала ${startTime}
-            // </div>`
-            fieldElement.innerHTML = renderHeder();
-            fieldElement.classList.remove("start-game-field");
-            mineGameField ();
-            setTimeout(userGameField, 5000);
-        };
-    });
-};
+            setTimeout(userGameField, 3000, {difficultLevel, index});
+        }
+    })
+}
 
-startGame();
-// renderHeder();
-// const clikFunction = () => {
-//     const button = document.querySelector(".new_Game-button")
-//     button.addEventListener("click", () => {
-//         cardViewFunction();
-//     });
-// };
-
-// clikFunction();
+startGame()

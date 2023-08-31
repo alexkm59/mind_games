@@ -160,11 +160,22 @@
   color: white;
 }
 
+.card-forView {
+  display: grid;
+  grid-template-columns: repeat(9, 106px);
+  justify-items: end;
+  justify-content: center;
+}
+
 .card-close {
   display: grid;
   grid-template-columns: repeat(9, 106px);
   justify-items: end;
   justify-content: center;
+}
+
+.displayNone {
+  display: none;
 }
 
 .card {

@@ -165,6 +165,15 @@
     background-color: #7ac100;
     color: white;
 }
+.card-forView{
+    display: grid;
+    grid-template-columns: repeat(9, 106px);
+    justify-items: end;
+    justify-content: center;
+    // height: 400px;
+
+}
+
 .card-close {
     display: grid;
     grid-template-columns: repeat(9, 106px);
@@ -172,6 +181,14 @@
     justify-content: center;
     // height: 400px;
 }
+
+
+.displayNone {
+    display: none;
+}
+
+
+
 .card {
     width: 95px;
     height: 133px;
