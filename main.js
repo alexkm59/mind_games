@@ -1,4 +1,3 @@
-import "./style.scss"
 import { renderHeder, mineGameField } from "./first_game_field.js"
 let difficultLevel = 0
 // let totalRandCards = []

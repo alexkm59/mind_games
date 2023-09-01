@@ -6,9 +6,9 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "format": "prettier —write",
-        "lint:scss": "stylelint './src/**.scss'",
-        "build": "webpack",
-        "start": "webpack-dev-server --open"
+        "lint:js": "eslint *.js",
+        "lint:scss": "stylelint *.scss"
+        
     },
     "repository": {
         "type": "git",
