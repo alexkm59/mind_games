@@ -1,11 +1,13 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+
 module.exports = {
     entry: "./main.js",
-    mode:"development",
+    mode: "development",
     module: {
         rules: [
-            { test: /\.scss$/, use: ["style-loader", "stylelint-scss"] },
+            { test: /\.css$/, use: [MiniCssExtractPlugin.loader, "css-loader"] },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: "asset/resource",
@@ -22,6 +24,7 @@ module.exports = {
         clean: true,
     },
     plugins: [
+        new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
             template: "./index.html",
         }),
