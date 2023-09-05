@@ -2,7 +2,12 @@
 
 // Отрисовываем заголовок игрового поля
 export const renderHeder = () => {
-    return `
+    // timer ()
+    // const fieldElement = document.querySelector(".start-game-field")
+    const hederElement = document.querySelector(".start-game-field")
+    // fieldElement.innerHTML = renderHeder()
+
+    hederElement.innerHTML = `
 <div class="game-field">
             <div class="heder">
                 <div class="heder-time-box">
@@ -18,6 +23,9 @@ export const renderHeder = () => {
             <div class="card-forView"></div> 
             
             </div>`
+    console.log(hederElement)
+    hederElement.classList.remove("start-game-field")
+    // fieldElement.classList.remove("start-game-field")
 }
 
 export const mineGameField = ({ difficultLevel }) => {
@@ -124,13 +132,14 @@ const closeCardFunction = () => {
     }
 
     gamePlayFunction()
+    
 }
 
 const gamePlayFunction = () => {
     // let openCardCount = 0;
     let openCardNunber = 0
-    let rangFirstCard =''
-    let iconFirstCard =''
+    let rangFirstCard = ""
+    let iconFirstCard = ""
     const cardElements = document.querySelectorAll(".card")
     console.log({ cardElements })
     for (const cardElement of cardElements) {
@@ -142,24 +151,42 @@ const gamePlayFunction = () => {
             }
             cardElement.classList.add("card-open")
             openCardNunber = openCardNunber + 1
-            if ((openCardNunber % 2) !== 0) {
+            if (openCardNunber % 2 !== 0) {
                 rangFirstCard = cardElement.dataset.card
                 iconFirstCard = cardElement.dataset.icon
             }
-            
-            if ((openCardNunber % 2) === 0) {
+
+            if (openCardNunber % 2 === 0) {
                 let rangSecondCard = cardElement.dataset.card
                 let iconSecondCard = cardElement.dataset.icon
-                if ((rangSecondCard === rangFirstCard) && (iconSecondCard === iconFirstCard)){
+                if (
+                    rangSecondCard === rangFirstCard &&
+                    iconSecondCard === iconFirstCard
+                ) {
                     alert(`Вы выиграли`)
+                } else {
+                    alert(`Вы проиграли`)
                 }
-else {
-    alert (`Вы проиграли`)
-}
             }
-
         })
     }
+    timerFunction()
+}
+
+// Функция таймера
+const timerFunction = () => {
+    let timerShow = document.querySelector(".heder-time")
+    let minuts = 0
+    let seconds = 0
+    let timer = 0
+    setInterval(() => {
+        timerShow.innerHTML = `${minuts < 10 ? `0${minuts}` : minuts}.${
+            seconds < 10 ? `0${seconds}` : seconds
+        }`
+        timer ++
+        seconds = timer % 60
+        minuts = Math.trunc(timer / 60)
+    }, 1000)
 }
 
 // export const userGameField = ({ difficultLevel, index }) => {

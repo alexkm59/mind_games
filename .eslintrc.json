@@ -13,7 +13,7 @@
         "sourceType": "module"
       },
       "rules": {
-        "prettier/prettier": "error",
+        "prettier/prettier": "1",
         "camelcase": [
           "error"
         ],
