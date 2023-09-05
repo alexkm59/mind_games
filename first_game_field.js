@@ -1,5 +1,5 @@
 // import { library } from "webpack"
-
+import { timerFunction } from "./timer_function.js"
 // Отрисовываем заголовок игрового поля
 export const renderHeder = () => {
     // timer ()
@@ -88,24 +88,18 @@ export const mineGameField = ({ difficultLevel }) => {
         }
 
         let cardElement = `
-                <div class="card-open" data-id="${index[i]}" data-card="${
-                    totalRandCards[index[i]]
-                }" data-icon="${cardIcon}" >
-                        <div class="cardIn card-heder">${
-                            totalRandCards[index[i]]
-                        }</div>
+                <div class="card-open" data-id="${index[i]}" data-card="${totalRandCards[index[i]]}" data-icon="${cardIcon}" >
+                        <div class="cardIn card-heder">${totalRandCards[index[i]]}</div>
                         <div class="cardIn card-heder--${cardIcon} "></div>
                         <div class="cardIn card-middle--${cardIcon} "></div>
                         <div class="cardIn card-down--${cardIcon} "></div>
-                        <div class="cardIn card-down ">${
-                            totalRandCards[index[i]]
-                        }</div>
-                
+                        <div class="cardIn card-down ">${totalRandCards[index[i]]}</div>
                 </div>`
 
         cardsField.push(cardElement)
     }
 
+    
     const fieldElement = document.querySelector(".card-forView")
     for (let i of cardsField) {
         fieldElement.innerHTML = fieldElement.innerHTML + i
@@ -132,7 +126,6 @@ const closeCardFunction = () => {
     }
 
     gamePlayFunction()
-    
 }
 
 const gamePlayFunction = () => {
@@ -164,6 +157,8 @@ const gamePlayFunction = () => {
                     iconSecondCard === iconFirstCard
                 ) {
                     alert(`Вы выиграли`)
+                    // добавить функцию выигрыша
+                    celebrationFunction()
                 } else {
                     alert(`Вы проиграли`)
                 }
@@ -173,20 +168,30 @@ const gamePlayFunction = () => {
     timerFunction()
 }
 
-// Функция таймера
-const timerFunction = () => {
-    let timerShow = document.querySelector(".heder-time")
-    let minuts = 0
-    let seconds = 0
-    let timer = 0
-    setInterval(() => {
-        timerShow.innerHTML = `${minuts < 10 ? `0${minuts}` : minuts}.${
-            seconds < 10 ? `0${seconds}` : seconds
-        }`
-        timer ++
-        seconds = timer % 60
-        minuts = Math.trunc(timer / 60)
-    }, 1000)
+const celebrationFunction = () => {
+    const messageWindow = document.querySelector(".uspeh")
+    messageWindow.innerHTML =
+    `<div class="start-game-field">
+        
+    <div class="start-box start">
+        <p class="start-box--text"> Выбери сложность</p>
+        <div class="start-box--difficult">
+
+            <div class="start-box--difficultLevel"> 
+            <button class="start-box--difficultValue" name="1"> 1</button>    
+            </div>
+            <div class="start-box--difficultLevel"> 
+                <button class="start-box--difficultValue" name="2"> 2</button>  
+            </div>
+            <div class="start-box--difficultLevel"> 
+                <button class="start-box--difficultValue" name="3"> 3</button>   
+            </div>
+        </div>
+        <button class="start-box--button">Играть заново</button>
+
+        
+    </div>
+</div>`
 }
 
 // export const userGameField = ({ difficultLevel, index }) => {
