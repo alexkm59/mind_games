@@ -24,6 +24,16 @@
   background-color: #004980;
 }
 
+.modal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  z-index: 100;
+}
+
 .start-box {
   margin-top: 158px;
   margin: 50px;

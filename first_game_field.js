@@ -8,7 +8,8 @@ export const renderHeder = () => {
     // fieldElement.innerHTML = renderHeder()
 
     hederElement.innerHTML = `
-<div class="game-field">
+    <div class="modal"></div>
+    <div class="game-field">
             <div class="heder">
                 <div class="heder-time-box">
                     <div class="heder-time--text">
@@ -169,7 +170,7 @@ const gamePlayFunction = () => {
 }
 
 const celebrationFunction = () => {
-    const messageWindow = document.querySelector(".uspeh")
+    const messageWindow = document.querySelector(".modal")
     messageWindow.innerHTML =
     `<div class="start-game-field">
         
