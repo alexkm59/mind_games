@@ -30,16 +30,19 @@
     // flex-direction: column;
     // align-items: center;
     // justify-content: center;
+    z-index: 1;
+    position: relative;
 }
 .modal{
     width: 100%;
-     height: 100%;
-        //  position: absolute;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         top: 0;
-    	     z-index: 100;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    z-index: 100;
+    position: absolute;
+    background-color: rgb(0 73 128 / 80%);
        
 }
 
@@ -53,7 +56,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-color: lightblue;
+    // background-color: lightblue;
+    background-color:#C2F5FF;
 }
 
 .start-box--text {
@@ -354,4 +358,87 @@
     background-image: url("./img/small_Krest.svg");
     grid-row-start: 7;
     grid-column-start: 5;
+}
+.finish-box--text{
+    color: var(--blue-120, #004980);
+    font-variant-numeric: lining-nums proportional-nums;
+    
+    /* Pres → Text M */
+    font-family: StratosSkyeng;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 48px; /* 120% */
+}
+.finish-box--time{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+
+}
+
+.finish-box--timeText{
+    color: #000;
+font-variant-numeric: lining-nums proportional-nums;
+
+/* Pres → Caption S */
+font-family: StratosSkyeng;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: 32px; /* 133.333% */
+}
+
+.finish-box--img__celebr{
+    // background-image: url("./img/celebration.png");
+    width: 96px;
+    height: 96px;  
+    position: relative;
+    z-index: 999;
+    background: url("./img/celebration.png");
+}
+.finish-box--img__dead{
+    // background-image: url("./img/celebration.png");
+    width: 96px;
+    height: 96px;  
+    position: relative;
+    z-index: 999;
+    background: url("./img/dead.png");
+}
+
+
+.finish-box--timer{
+    color: #000;
+    font-family: StratosSkyeng;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 72px; /* 112.5% */
+}
+
+.finish-game-field{
+    margin: 0px;
+    height: 100vh;
+    // background-color: #004980;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.finish-box--button{
+    font-family: StratosSkyeng;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: center;
+    width: 246px;
+    height: 50px;
+
+    border-radius: 12px;
+    border-color: #7ac100;
+    background-color: #7ac100;
+    color: white;
 }

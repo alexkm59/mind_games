@@ -1,14 +1,16 @@
 // import { library } from "webpack"
 import { timerFunction } from "./timer_function.js"
 // Отрисовываем заголовок игрового поля
+export function stopTimer () {}
+let timerStop = 0
 export const renderHeder = () => {
     // timer ()
     // const fieldElement = document.querySelector(".start-game-field")
     const hederElement = document.querySelector(".start-game-field")
     // fieldElement.innerHTML = renderHeder()
-
+    // <div class="modal"></div>
     hederElement.innerHTML = `
-    <div class="modal"></div>
+    <div class="modal-window"></div>
     <div class="game-field">
             <div class="heder">
                 <div class="heder-time-box">
@@ -19,7 +21,7 @@ export const renderHeder = () => {
 
                     <div class="heder-time">00.00</div>
                 </div>
-                <button class="new_Game-button">Начать заново</button>
+                <button onclick="document.location='./index.html'" class="new_Game-button">Начать заново</button>
             </div>
             <div class="card-forView"></div> 
             
@@ -89,18 +91,23 @@ export const mineGameField = ({ difficultLevel }) => {
         }
 
         let cardElement = `
-                <div class="card-open" data-id="${index[i]}" data-card="${totalRandCards[index[i]]}" data-icon="${cardIcon}" >
-                        <div class="cardIn card-heder">${totalRandCards[index[i]]}</div>
+                <div class="card-open" data-id="${index[i]}" data-card="${
+                    totalRandCards[index[i]]
+                }" data-icon="${cardIcon}" >
+                        <div class="cardIn card-heder">${
+                            totalRandCards[index[i]]
+                        }</div>
                         <div class="cardIn card-heder--${cardIcon} "></div>
                         <div class="cardIn card-middle--${cardIcon} "></div>
                         <div class="cardIn card-down--${cardIcon} "></div>
-                        <div class="cardIn card-down ">${totalRandCards[index[i]]}</div>
+                        <div class="cardIn card-down ">${
+                            totalRandCards[index[i]]
+                        }</div>
                 </div>`
 
         cardsField.push(cardElement)
     }
 
-    
     const fieldElement = document.querySelector(".card-forView")
     for (let i of cardsField) {
         fieldElement.innerHTML = fieldElement.innerHTML + i
@@ -134,6 +141,10 @@ const gamePlayFunction = () => {
     let openCardNunber = 0
     let rangFirstCard = ""
     let iconFirstCard = ""
+    let result = 0
+    let timerId = 0
+    
+
     const cardElements = document.querySelectorAll(".card")
     console.log({ cardElements })
     for (const cardElement of cardElements) {
@@ -157,43 +168,50 @@ const gamePlayFunction = () => {
                     rangSecondCard === rangFirstCard &&
                     iconSecondCard === iconFirstCard
                 ) {
-                    alert(`Вы выиграли`)
                     // добавить функцию выигрыша
-                    celebrationFunction()
+                    result = 1
+                    
+                  
                 } else {
-                    alert(`Вы проиграли`)
+                    result = 0
+                   
                 }
+                
+                celebrationFunction(result)
+             
             }
+
         })
     }
     timerFunction()
 }
 
-const celebrationFunction = () => {
-    const messageWindow = document.querySelector(".modal")
-    messageWindow.innerHTML =
-    `<div class="start-game-field">
-        
+const celebrationFunction = (result) => {
+    let resultText = ""
+    const messageWindow = document.querySelector(".modal-window")
+    clearInterval(2)
+    messageWindow.classList.add("modal")
+    result === 1 ? (resultText = "Вы выиграли!") : (resultText = "Вы проиграли!")
+    
+    messageWindow.innerHTML = `<div class="finish-game-field">
     <div class="start-box start">
-        <p class="start-box--text"> Выбери сложность</p>
-        <div class="start-box--difficult">
-
-            <div class="start-box--difficultLevel"> 
-            <button class="start-box--difficultValue" name="1"> 1</button>    
-            </div>
-            <div class="start-box--difficultLevel"> 
-                <button class="start-box--difficultValue" name="2"> 2</button>  
-            </div>
-            <div class="start-box--difficultLevel"> 
-                <button class="start-box--difficultValue" name="3"> 3</button>   
-            </div>
+    <div class= ${(result === 1) ? "finish-box--img__celebr" : "finish-box--img__dead"}>   </div>
+    <p class="finish-box--text"> ${resultText}</p>
+        <div class="finish-box--time">
+        <div class="finish-box--timeText">Затраченное время: </div>
+            <div class="finish-box--timer">${document.querySelector(".heder-time").innerHTML}</div>
         </div>
-        <button class="start-box--button">Играть заново</button>
-
-        
+        <button onclick="document.location='./index.html'" class="finish-box--button">Играть снова</button>
     </div>
 </div>`
+
 }
+
+
+
+// {/* <img class="finish-box--img" scr="./img/celebration.svg"></img> */}
+// const hederElement = document.querySelector(".start-game-field")
+// hederElement.classList.remove("start-game-field")
 
 // export const userGameField = ({ difficultLevel, index }) => {
 //     let playCards = 0
