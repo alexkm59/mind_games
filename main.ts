@@ -1,18 +1,15 @@
 // import "./style.css"
-import { renderHeder, mineGameField } from "./first_game_field.js"
-let difficultLevel = 0
-// let totalRandCards = []
-// let totalRandSuits = []
-// let index = []
+import { renderHeder, mineGameField } from "./first_game_field"
+let difficultLevel: string = "0"
+
 // Функция выделения кнопки уровня сложности
 
 const diffLevelButtonColor = () => {
     // let difficultLevel = 0;
-    const difficulteElements = document.querySelectorAll(
+
+    const difficulteElements: any = document.querySelectorAll(
         ".start-box--difficultValue",
     )
-
-    // difficulteElement.classList.remove('color');
 
     for (const difficulteElement of difficulteElements) {
         difficulteElement.addEventListener("click", () => {
@@ -34,16 +31,16 @@ diffLevelButtonColor()
 // Функция старта игры, выбор сложности
 
 const startGame = () => {
-    const startElement = document.querySelector(".start-box--button")
+    const startElement: any = document.querySelector(".start-box--button")
     // const fieldElement = document.querySelector(".start-game-field")
     startElement.addEventListener("click", () => {
-        if (difficultLevel === 0) {
+        if (difficultLevel === "0") {
             return alert("Выберите сложность игры")
         } else {
             // fieldElement.innerHTML = renderHeder()
             renderHeder()
             // fieldElement.classList.remove("start-game-field")
-            mineGameField({ difficultLevel })
+            mineGameField(difficultLevel)
         }
     })
 }
