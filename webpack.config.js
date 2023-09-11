@@ -1,10 +1,12 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const isProduction = process.env.NODE_ENV === "production"
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 
 module.exports = {
     entry: "./main.ts",
-    mode: "development",
+    mode: isProduction ? "production" : "development",
     module: {
         rules: [
             {
@@ -24,6 +26,11 @@ module.exports = {
             },
         ],
     },
+    optimization: {
+        minimizer: ["...", new CssMinimizerPlugin()],
+    },
+
+
     resolve: {
         extensions: [".ts", ".js"],
       },
