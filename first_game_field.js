@@ -128,17 +128,36 @@ const closeCardFunction = () => {
 
 const gamePlayFunction = () => {
     // let openCardCount = 0;
+    let openCardNunber = 0
+    let rangFirstCard =''
+    let iconFirstCard =''
     const cardElements = document.querySelectorAll(".card")
     console.log({ cardElements })
     for (const cardElement of cardElements) {
         cardElement.addEventListener("click", () => {
             // const cardChildElements = document.querySelectorAll(".cardIn").children
             const cardChildElements = cardElement.children
-            console.log({ cardChildElements })
             for (const cardChildElement of cardChildElements) {
                 cardChildElement.classList.remove("displayNone")
             }
             cardElement.classList.add("card-open")
+            openCardNunber = openCardNunber + 1
+            if ((openCardNunber % 2) !== 0) {
+                rangFirstCard = cardElement.dataset.card
+                iconFirstCard = cardElement.dataset.icon
+            }
+            
+            if ((openCardNunber % 2) === 0) {
+                let rangSecondCard = cardElement.dataset.card
+                let iconSecondCard = cardElement.dataset.icon
+                if ((rangSecondCard === rangFirstCard) && (iconSecondCard === iconFirstCard)){
+                    alert(`Вы выиграли`)
+                }
+else {
+    alert (`Вы проиграли`)
+}
+            }
+
         })
     }
 }
