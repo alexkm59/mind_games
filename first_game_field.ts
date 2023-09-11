@@ -177,7 +177,7 @@ const gamePlayFunction = () => {
 
 const celebrationFunction = (result: number) => {
     let resultText = ""
-    let hederTimer: any = document.querySelector(".heder-time")
+    let hederTimer = document.querySelector(".heder-time")
     const messageWindow: any = document.querySelector(".modal-window")
     clearInterval(2)
     messageWindow.classList.add("modal")
@@ -193,7 +193,7 @@ const celebrationFunction = (result: number) => {
     <p class="finish-box--text"> ${resultText}</p>
         <div class="finish-box--time">
         <div class="finish-box--timeText">Затраченное время: </div>
-            <div class="finish-box--timer">${hederTimer}</div>
+            <div class="finish-box--timer">${hederTimer?.innerHTML}</div>
         </div>
         <button onclick="document.location='./index.html'" class="finish-box--button">Играть снова</button>
     </div>

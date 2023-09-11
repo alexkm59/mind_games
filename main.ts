@@ -1,4 +1,4 @@
-// import "./style.css"
+import "./style.css"
 import { renderHeder, mineGameField } from "./first_game_field"
 let difficultLevel: string = "0"
 
