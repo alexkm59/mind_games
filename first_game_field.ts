@@ -2,13 +2,9 @@
 import { timerFunction } from "./timer_function"
 // Отрисовываем заголовок игрового поля
 export function stopTimer() {}
-let timerStop = 0
+
 export const renderHeder = () => {
-    // timer ()
-    // const fieldElement = document.querySelector(".start-game-field")
     const hederElement = document.querySelector(".start-game-field")
-    // fieldElement.innerHTML = renderHeder()
-    // <div class="modal"></div>
     if (hederElement) {
         hederElement.innerHTML = `
         <div class="modal-window"></div>
@@ -37,8 +33,8 @@ export const mineGameField = (difficultLevel: string) => {
     const arrCard = ["A", "K", "Q", "J", "10", "9", "8", "7", "6"]
     const arrSuit = ["Piki", "Cherv", "Bubn", "Krest"]
     const cardsField = []
-    let randCard = []
-    let randSuit = []
+    const randCard = []
+    const randSuit = []
     let totalRandCards = []
     let totalRandSuits = []
     let index = []
@@ -84,7 +80,7 @@ export const mineGameField = (difficultLevel: string) => {
             cardIcon = "iconKrest"
         }
 
-        let cardElement = `
+        const cardElement = `
                 <div class="card-open" data-id="${index[i]}" data-card="${
                     totalRandCards[index[i]]
                 }" data-icon="${cardIcon}" >
@@ -103,7 +99,7 @@ export const mineGameField = (difficultLevel: string) => {
     }
 
     const fieldElement = document.querySelector(".card-forView")
-    for (let i of cardsField) {
+    for (const i of cardsField) {
         if (fieldElement) {
             fieldElement.innerHTML = fieldElement.innerHTML + i
         }
@@ -116,14 +112,16 @@ export const mineGameField = (difficultLevel: string) => {
 
 // Функция закрытия карт
 const closeCardFunction = () => {
-    const cardElements: any = document.querySelectorAll(".card-open")
-    const cardInElements: any = document.querySelectorAll(".cardIn")
+    const cardElements: NodeListOf<Element> =
+        document.querySelectorAll(".card-open")
+    const cardInElements: NodeListOf<Element> =
+        document.querySelectorAll(".cardIn")
 
-    for (const cardInElement of cardInElements) {
+    for (const cardInElement of cardInElements as any) {
         cardInElement.classList.add("displayNone")
     }
 
-    for (const cardElement of cardElements) {
+    for (const cardElement of cardElements as any) {
         cardElement.classList.add("card")
         cardElement.classList.remove("card-open")
     }
@@ -137,11 +135,10 @@ const gamePlayFunction = () => {
     let rangFirstCard = ""
     let iconFirstCard = ""
     let result = 0
-    let timerId = 0
 
-    const cardElements: any = document.querySelectorAll(".card")
+    const cardElements: NodeListOf<Element> = document.querySelectorAll(".card")
     console.log({ cardElements })
-    for (const cardElement of cardElements) {
+    for (const cardElement of cardElements as any) {
         cardElement.addEventListener("click", () => {
             // const cardChildElements = document.querySelectorAll(".cardIn").children
             const cardChildElements = cardElement.children
@@ -156,8 +153,8 @@ const gamePlayFunction = () => {
             }
 
             if (openCardNunber % 2 === 0) {
-                let rangSecondCard = cardElement.dataset.card
-                let iconSecondCard = cardElement.dataset.icon
+                const rangSecondCard = cardElement.dataset.card
+                const iconSecondCard = cardElement.dataset.icon
                 if (
                     rangSecondCard === rangFirstCard &&
                     iconSecondCard === iconFirstCard
@@ -177,15 +174,16 @@ const gamePlayFunction = () => {
 
 const celebrationFunction = (result: number) => {
     let resultText = ""
-    let hederTimer = document.querySelector(".heder-time")
-    const messageWindow: any = document.querySelector(".modal-window")
+    const hederTimer = document.querySelector(".heder-time")
+    const messageWindow: HTMLElement | null =
+        document.querySelector(".modal-window")
     clearInterval(2)
-    messageWindow.classList.add("modal")
+    messageWindow?.classList.add("modal")
     result === 1
         ? (resultText = "Вы выиграли!")
         : (resultText = "Вы проиграли!")
 
-    messageWindow.innerHTML = `<div class="finish-game-field">
+    messageWindow!.innerHTML = `<div class="finish-game-field">
     <div class="start-box start">
     <div class= ${
         result === 1 ? "finish-box--img__celebr" : "finish-box--img__dead"
