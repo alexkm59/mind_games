@@ -63,6 +63,7 @@ export const mineGameField = (difficultLevel: string) => {
     console.log(totalRandCards)
     console.log(totalRandSuits)
 
+
     // Перетасовываем карты
     for (let i = 0; i < playCards * 2; i++) {
         index[i] = i
@@ -113,6 +114,11 @@ export const mineGameField = (difficultLevel: string) => {
 
     setTimeout(closeCardFunction, 3000)
 }
+
+// передача данных для проверок
+
+module.exports = {mineGameField}
+
 
 // Функция закрытия карт
 const closeCardFunction = () => {
