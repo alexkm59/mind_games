@@ -10,7 +10,7 @@
         "lint:scss": "stylelint style.scss",
         "build": "cross-env NODE_ENV=production webpack",
         "start": "webpack-dev-server --open",
-        "lint:ts": "tsc --noEmit"
+        "lint:ts": "eslint *.ts"
     },
     "repository": {
         "type": "git",
