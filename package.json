@@ -18,6 +18,7 @@
     },
     "author": "",
     "license": "ISC",
+    "type":"module",
     "devDependencies": {
         "cross-env": "^7.0.3",
         "css-loader": "^6.8.1",

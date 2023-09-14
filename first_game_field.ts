@@ -113,11 +113,12 @@ export const mineGameField = (difficultLevel: string) => {
     // Вызвать функцию которая закроет карты через 5 секунд
 
     setTimeout(closeCardFunction, 3000)
+    return {totalRandCards}
 }
 
 // передача данных для проверок
 
-module.exports = {mineGameField}
+module.exports = { mineGameField }
 
 
 // Функция закрытия карт
