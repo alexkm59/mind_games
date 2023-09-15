@@ -1,5 +1,7 @@
-const { it, expect, describe } = require("@jest/globals");
-const {mineGameField} = require ("./first_game_field");
+// const { it, expect, describe } = require("@jest/globals");
+// const {mineGameField} = require ("./first_game_field");
+import { it, expect, describe } from '@jest/globals'
+import {mineGameField} from ("./first_game_field")
 describe ('array check', ()=>{
     it('length of array should be equal to difficult ', ()=>{
         // Подготовка
