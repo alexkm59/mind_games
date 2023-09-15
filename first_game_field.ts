@@ -1,7 +1,6 @@
 // import { library } from "webpack"
 import { timerFunction } from "./timer_function"
 // Отрисовываем заголовок игрового поля
-export function stopTimer() {}
 let timerStop = 0
 export const renderHeder = () => {
     // timer ()
