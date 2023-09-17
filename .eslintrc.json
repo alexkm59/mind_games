@@ -16,7 +16,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "prettier/prettier": 2,
+        "prettier/prettier": "error",
         "camelcase": ["error"],
         "eqeqeq": ["error", "always"]
     }
