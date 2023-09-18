@@ -4,7 +4,8 @@
 //   testEnvironment: 'node',
 // };
 module.exports = {
-    testEnvironment: "jest-environment-node",
+  preset: 'ts-jest',  
+  testEnvironment: "jest-environment-node",
     setupFilesAfterEnv: ["<rootDir>/jest.config.js"],
     transform: {
         "\\.[jt]sx?$": "babel-jest",

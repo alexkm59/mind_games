@@ -1,19 +1,23 @@
 const { it, expect, describe } = require("@jest/globals");
-const {mineGameField, renderHeder} = require ("./first_game_field");
+const {cardRandomFunction} = require ("./cardRandomFunction");
 // import { it, expect, describe } from '@jest/globals'
-// import {mineGameField} from ("./first_game_field")
+// import {cardRandomFunction} from cardRandomFunction
 describe ('array check', ()=>{
     it('length of array should be equal to difficult ', ()=>{
         // Подготовка
         let length = 6
         let difficultLevel = "1"
-        const testArray = [] 
+        let testArray = [] 
         // Действие
-        renderHeder ()
-        testArray = mineGameField (difficultLevel)
+        
+        testArray = cardRandomFunction (difficultLevel)
        
         // Сверка
-        assert.equal(length, testArray.length)
+        if (testArray.length !== length) {
+            throw Error("Error in array length");
+          }
+
+        // assert.equal(length, testArray.length)
         })
 
 })

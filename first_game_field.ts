@@ -1,5 +1,6 @@
 // import { library } from "webpack"
 import { timerFunction } from "./timer_function"
+import {cardRandomFunction} from "./cardRandomFunction"
 // Отрисовываем заголовок игрового поля
 let timerStop = 0
 export const renderHeder = () => {
@@ -33,10 +34,10 @@ export const renderHeder = () => {
 
 export const mineGameField = (difficultLevel: string) => {
     let playCards = 0
-    const arrCard = ["A", "K", "Q", "J", "10", "9", "8", "7", "6"]
+    // const arrCard = ["A", "K", "Q", "J", "10", "9", "8", "7", "6"]
     const arrSuit = ["Piki", "Cherv", "Bubn", "Krest"]
     const cardsField = []
-    let randCard = []
+    // let randCard = []
     let randSuit = []
     let totalRandCards = []
     let totalRandSuits = []
@@ -54,14 +55,15 @@ export const mineGameField = (difficultLevel: string) => {
     }
     // Создание массивов с случайными рангами и мастями
     for (let i = 0; i <= playCards - 1; i++) {
-        randCard[i] = arrCard[Math.floor(Math.random() * arrCard.length)]
+        // randCard[i] = arrCard[Math.floor(Math.random() * arrCard.length)]
         randSuit[i] = arrSuit[Math.floor(Math.random() * arrSuit.length)]
     }
-    totalRandCards = randCard.concat(randCard)
+    // totalRandCards = randCard.concat(randCard)
     totalRandSuits = randSuit.concat(randSuit)
-    console.log(totalRandCards)
+    // console.log(totalRandCards)
     console.log(totalRandSuits)
 
+    totalRandCards = cardRandomFunction(difficultLevel)
 
     // Перетасовываем карты
     for (let i = 0; i < playCards * 2; i++) {
@@ -117,7 +119,7 @@ export const mineGameField = (difficultLevel: string) => {
 
 // передача данных для проверок
 
-module.exports = { mineGameField }
+// module.exports = { mineGameField }
 
 
 // Функция закрытия карт
