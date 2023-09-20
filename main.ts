@@ -6,14 +6,14 @@ let difficultLevel: string = "0"
 const diffLevelButtonColor = () => {
     // let difficultLevel = 0;
 
-    const difficulteElements: any = document.querySelectorAll(
+    const difficulteElements: NodeListOf<Element>  = document.querySelectorAll(
         ".start-box--difficultValue",
     )
 
-    for (const difficulteElement of difficulteElements) {
+    for (const difficulteElement of difficulteElements as any) {
         difficulteElement.addEventListener("click", () => {
             if (difficultLevel !== difficulteElement.name) {
-                for (const difficulteElement of difficulteElements) {
+                for (const difficulteElement of difficulteElements as any) {
                     difficulteElement.classList.remove("color")
                 }
 
@@ -30,9 +30,9 @@ diffLevelButtonColor()
 // Функция старта игры, выбор сложности
 
 const startGame = () => {
-    const startElement: any = document.querySelector(".start-box--button")
+    const startElement: HTMLElement | null = document.querySelector(".start-box--button")
     // const fieldElement = document.querySelector(".start-game-field")
-    startElement.addEventListener("click", () => {
+    startElement?.addEventListener("click", () => {
         if (difficultLevel === "0") {
             return alert("Выберите сложность игры")
         } else {

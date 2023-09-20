@@ -8,9 +8,8 @@
         "format": "prettier —write",
         "lint:js": "eslint *.js",
         "lint:scss": "stylelint style.scss",
-        "build": "cross-env NODE_ENV=production webpack",
-        "start": "webpack-dev-server --open",
-        "lint:ts": "tsc --noEmit"
+        "build": "webpack",
+        "start": "webpack-dev-server --open"
     },
     "repository": {
         "type": "git",
@@ -19,12 +18,14 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+
         "@babel/core": "^7.22.20",
         "@babel/preset-env": "^7.22.20",
         "@babel/preset-typescript": "^7.22.15",
         "@jest/globals": "^29.7.0",
         "babel-jest": "^29.7.0",
         "cross-env": "^7.0.3",
+
         "css-loader": "^6.8.1",
         "css-minimizer-webpack-plugin": "^5.0.1",
         "eslint": "^8.48.0",
