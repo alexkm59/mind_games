@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const isProduction = process.env.NODE_ENV === "production"
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
-
 module.exports = {
     entry: "./main.js",
     mode: isProduction ? "production" : "development",
