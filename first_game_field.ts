@@ -1,6 +1,7 @@
 import { timerFunction } from "./timer_function"
+
+import {cardRandomFunction} from "./cardRandomFunction"
 //Отрисовываем заголовок игрового поля
-export function stopTimer() {}
 export const renderHeder = () => {
     const hederElement = document.querySelector(".start-game-field")
     if (hederElement) {
@@ -24,11 +25,13 @@ export const renderHeder = () => {
 }
 export const mineGameField = (difficultLevel: string) => {
     let playCards = 0
-    const arrCard = ["A", "K", "Q", "J", "10", "9", "8", "7", "6"]
+    // const arrCard = ["A", "K", "Q", "J", "10", "9", "8", "7", "6"]
     const arrSuit = ["Piki", "Cherv", "Bubn", "Krest"]
     const cardsField = []
-    const randCard = []
-    const randSuit = []
+
+    // let randCard = []
+    let randSuit = []
+
     let totalRandCards = []
     let totalRandSuits = []
     let index = []
@@ -44,11 +47,17 @@ export const mineGameField = (difficultLevel: string) => {
     }
     // Создание массивов с случайными рангами и мастями
     for (let i = 0; i <= playCards - 1; i++) {
-        randCard[i] = arrCard[Math.floor(Math.random() * arrCard.length)]
+        // randCard[i] = arrCard[Math.floor(Math.random() * arrCard.length)]
         randSuit[i] = arrSuit[Math.floor(Math.random() * arrSuit.length)]
     }
-    totalRandCards = randCard.concat(randCard)
+    // totalRandCards = randCard.concat(randCard)
     totalRandSuits = randSuit.concat(randSuit)
+    // console.log(totalRandCards)
+    console.log(totalRandSuits)
+
+    totalRandCards = cardRandomFunction(difficultLevel)
+
+
     // Перетасовываем карты
     for (let i = 0; i < playCards * 2; i++) {
         index[i] = i
@@ -92,7 +101,15 @@ export const mineGameField = (difficultLevel: string) => {
     }
     // Вызвать функцию которая закроет карты через 5 секунд
     setTimeout(closeCardFunction, 3000)
+    return {totalRandCards}
 }
+
+// передача данных для проверок
+
+// module.exports = { mineGameField }
+
+
+
 // Функция закрытия карт
 const closeCardFunction = () => {
     const cardElements: NodeListOf<Element> =

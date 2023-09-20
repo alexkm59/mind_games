@@ -3,7 +3,6 @@ import { renderHeder, mineGameField } from "./first_game_field"
 let difficultLevel: string = "0"
 
 // Функция выделения кнопки уровня сложности
-
 const diffLevelButtonColor = () => {
     // let difficultLevel = 0;
 
