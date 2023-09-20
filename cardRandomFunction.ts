@@ -24,4 +24,4 @@ export const cardRandomFunction = (difficultLevel: string) => {
     totalRandCards = randCard.concat(randCard)
     return totalRandCards
 }
-module.exports = { cardRandomFunction }
+// module.exports = { cardRandomFunction }

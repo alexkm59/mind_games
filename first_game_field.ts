@@ -1,5 +1,4 @@
 import { timerFunction } from "./timer_function"
-
 import {cardRandomFunction} from "./cardRandomFunction"
 //Отрисовываем заголовок игрового поля
 export const renderHeder = () => {
