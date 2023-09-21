@@ -7,7 +7,7 @@
         "test": "jest",
         "format": "prettier —write",
         "lint:js": "eslint *.js",
-        "lint:scss": "stylelint style.scss",
+        "lint:scss": "stylelint --fix style.scss",
         "build": "cross-env NODE_ENV=production webpack",
         "start": "webpack-dev-server --open",
         "lint:ts": "eslint *.ts"

@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng;
   src: url("./fonts/Webfonts/stratosskyengweb-regular.woff");
 }
 
@@ -50,11 +50,10 @@
 }
 
 .start-box--text {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   font-size: 40px;
   font-weight: 400;
   line-height: 48px;
- 
   text-align: center;
   color: #004980;
   width: 208px;
@@ -67,7 +66,6 @@
 }
 
 .start-box--difficultLevel {
- 
   width: 98px;
   height: 98px;
   border-radius: 12px;
@@ -80,11 +78,11 @@
 }
 
 .start-box--difficultValue {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   font-size: 64px;
   font-weight: 400;
   line-height: 72px;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   text-align: center;
   color: #0080c1;
   background-color: white;
@@ -95,11 +93,10 @@
 }
 
 .color {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   font-size: 64px;
   font-weight: 400;
   line-height: 72px;
- 
   text-align: center;
   color: #0080c1;
   background-color: #7ac100;
@@ -110,15 +107,13 @@
 }
 
 .start-box--button {
-  font-family: StratosSkyeng;
+  font-family: StratosSkyeng, sans-serif;
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;
- 
   text-align: center;
   width: 246px;
   height: 50px;
-
   border-radius: 12px;
   border-color: #7ac100;
   background-color: #7ac100;
@@ -138,7 +133,7 @@
 }
 
 .heder-time--text {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 32px;
@@ -148,11 +143,11 @@
 }
 
 .heder-time {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   font-size: 64px;
   font-weight: 400;
   line-height: 72px;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   text-align: left;
   color: #fff;
 }
@@ -160,12 +155,11 @@
 .new_Game-button {
   width: 246px;
   height: 50px;
-  border-radius: 12px;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;
-  letter-spacing: 0em;
+  letter-spacing: 0;
   text-align: center;
   border-radius: 12px;
   border-color: #7ac100;
@@ -342,7 +336,7 @@
 .finish-box--text {
   color: var(--blue-120, #004980);
   font-variant-numeric: lining-nums proportional-nums;
-  font-family: StratosSkyeng;
+  font-family: StratosSkyeng, sans-serif;
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
@@ -359,7 +353,7 @@
 .finish-box--timeText {
   color: #000;
   font-variant-numeric: lining-nums proportional-nums;
-  font-family: StratosSkyeng;
+  font-family: StratosSkyeng, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -384,7 +378,7 @@
 
 .finish-box--timer {
   color: #000;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   font-size: 64px;
   font-style: normal;
   font-weight: 400;
@@ -400,7 +394,7 @@
 }
 
 .finish-box--button {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;

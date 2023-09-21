@@ -17,7 +17,6 @@
   },
   "rules": {
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
-    "camelcase": ["warning"],
     "eqeqeq": ["error", "always"]
   }
 }
