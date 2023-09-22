@@ -133,7 +133,7 @@ const gamePlayFunction = () => {
     cardElement.addEventListener("click", () => {
       // const cardChildElements = document.querySelectorAll(".cardIn").children
       const cardChildElements = cardElement.children
-      for (const cardChildElement of cardChildElements as any) {
+      for (const cardChildElement of cardChildElements) {
         cardChildElement.classList.remove("displayNone")
       }
       cardElement.classList.add("card-open")

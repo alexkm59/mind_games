@@ -8,7 +8,7 @@ const diffLevelButtonColor = () => {
 
   const difficulteElements: NodeListOf<Element> = document.querySelectorAll(".start-box--difficultValue")
   console.log(difficulteElements)
-  for (const difficulteElement of difficulteElements as any) {
+  for (const difficulteElement of Array.from(difficulteElements)) {
     difficulteElement.addEventListener("click", () => {
 
   if (difficultLevel !== difficulteElement.name) {
