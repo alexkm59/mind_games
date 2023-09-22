@@ -112,10 +112,10 @@ const closeCardFunction = () => {
     document.querySelectorAll(".card-open")
   const cardInElements: NodeListOf<Element> =
     document.querySelectorAll(".cardIn")
-  for (const cardInElement of cardInElements as any) {
+  for (const cardInElement of Array.from(cardInElements)) {
     cardInElement.classList.add("displayNone")
   }
-  for (const cardElement of cardElements as any) {
+  for (const cardElement of Array.from(cardElements)) {
     cardElement.classList.add("card")
     cardElement.classList.remove("card-open")
   }
@@ -133,7 +133,7 @@ const gamePlayFunction = () => {
     cardElement.addEventListener("click", () => {
       // const cardChildElements = document.querySelectorAll(".cardIn").children
       const cardChildElements = cardElement.children
-      for (const cardChildElement of cardChildElements) {
+      for (const cardChildElement of cardChildElements as any) {
         cardChildElement.classList.remove("displayNone")
       }
       cardElement.classList.add("card-open")
