@@ -124,23 +124,24 @@ const closeCardFunction = () => {
 const gamePlayFunction = () => {
   // let openCardCount = 0;
   let openCardNunber = 0
-  let rangFirstCard = ""
+  let rangFirstCard: string = ""
   let iconFirstCard = ""
   let result = 0
-  const cardElements: NodeListOf<Element> = document.querySelectorAll(".card")
+  const cardElements: NodeListOf<HTMLElement> | undefined =
+    document.querySelectorAll(".card")
   console.log({ cardElements })
-  for (const cardElement of cardElements as any) {
+  for (const cardElement of Array.from(cardElements)) {
     cardElement.addEventListener("click", () => {
       // const cardChildElements = document.querySelectorAll(".cardIn").children
       const cardChildElements = cardElement.children
-      for (const cardChildElement of cardChildElements) {
+      for (const cardChildElement of Array.from(cardChildElements)) {
         cardChildElement.classList.remove("displayNone")
       }
       cardElement.classList.add("card-open")
       openCardNunber = openCardNunber + 1
       if (openCardNunber % 2 !== 0) {
-        rangFirstCard = cardElement.dataset.card
-        iconFirstCard = cardElement.dataset.icon
+        rangFirstCard = cardElement.dataset.card!
+        iconFirstCard = cardElement.dataset.icon!
       }
       if (openCardNunber % 2 === 0) {
         const rangSecondCard = cardElement.dataset.card

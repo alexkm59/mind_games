@@ -6,20 +6,20 @@ let difficultLevel: string = "0"
 const diffLevelButtonColor = () => {
   // let difficultLevel = 0;
 
-  const difficulteElements: NodeListOf<Element> = document.querySelectorAll(".start-box--difficultValue")
+  const difficulteElements: NodeListOf<HTMLButtonElement> =
+    document.querySelectorAll(".start-box--difficultValue")
+  // NodeListOf<Element>
   console.log(difficulteElements)
   for (const difficulteElement of Array.from(difficulteElements)) {
     difficulteElement.addEventListener("click", () => {
+      if (difficultLevel !== difficulteElement.name) {
+        for (const difficulteElement of Array.from(difficulteElements)) {
+          difficulteElement.classList.remove("color")
+        }
 
-  if (difficultLevel !== difficulteElement.name) {
-    for (const difficulteElement of Array.from(difficulteElements)) {
-      difficulteElement.classList.remove("color")
-    }
+        difficulteElement.classList.add("color")
+      }
 
-    difficulteElement.classList.add("color")
-  
-}
-      
       // Записываем уровень сложности
       return (difficultLevel = difficulteElement.name)
     })
