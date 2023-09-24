@@ -11,7 +11,7 @@
         "build": "cross-env NODE_ENV=production webpack",
         "start": "webpack-dev-server --open",
         "lint:ts": "eslint --fix *.ts",
-        "lint": "npm run lint:ts && npm run lint:scss",
+        "lint": "npm run lint:ts && npm run lint:scss && npm run test",
         "prepare": "husky install"
     },
     "repository": {

@@ -1,5 +1,6 @@
 const { it, expect, describe } = require("@jest/globals");
 const {cardRandomFunction} = require ("./cardRandomFunction");
+const assert = require("assert").strict
 // import { it, expect, describe } from '@jest/globals'
 // import {cardRandomFunction} from cardRandomFunction
 describe ('array check', ()=>{
@@ -13,11 +14,11 @@ describe ('array check', ()=>{
         testArray = cardRandomFunction (difficultLevel)
        
         // Сверка
-        if (testArray.length !== length) {
-            throw Error("Error in array length");
-          }
+        // if (testArray.length !== length) {
+        //     throw Error("Error in array length");
+        //   }
 
-        // assert.equal(length, testArray.length)
+        assert.equal(length, testArray.length)
         })
 
 })
