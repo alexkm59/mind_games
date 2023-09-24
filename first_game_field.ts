@@ -98,7 +98,7 @@ export const mineGameField = (difficultLevel: string) => {
     }
   }
   // Вызвать функцию которая закроет карты через 5 секунд
-  setTimeout(closeCardFunction, 3000)
+  setTimeout(closeCardFunction, 3000, playCards)
   return { totalRandCards }
 }
 
@@ -107,7 +107,7 @@ export const mineGameField = (difficultLevel: string) => {
 // module.exports = { mineGameField }
 
 // Функция закрытия карт
-const closeCardFunction = () => {
+const closeCardFunction = (playCards:number) => {
   const cardElements: NodeListOf<Element> =
     document.querySelectorAll(".card-open")
   const cardInElements: NodeListOf<Element> =
@@ -119,11 +119,11 @@ const closeCardFunction = () => {
     cardElement.classList.add("card")
     cardElement.classList.remove("card-open")
   }
-  gamePlayFunction()
+  gamePlayFunction(playCards)
 }
-const gamePlayFunction = () => {
+const gamePlayFunction = (playCards:number) => {
   // let openCardCount = 0;
-  let openCardNunber = 0
+  let openCardNumber = 0
   let rangFirstCard: string = ""
   let iconFirstCard = ""
   let result = 0
@@ -138,25 +138,29 @@ const gamePlayFunction = () => {
         cardChildElement.classList.remove("displayNone")
       }
       cardElement.classList.add("card-open")
-      openCardNunber = openCardNunber + 1
-      if (openCardNunber % 2 !== 0) {
+      openCardNumber = openCardNumber + 1
+      if (openCardNumber % 2 !== 0) {
         rangFirstCard = cardElement.dataset.card!
         iconFirstCard = cardElement.dataset.icon!
       }
-      if (openCardNunber % 2 === 0) {
+      if (openCardNumber % 2 === 0) {
         const rangSecondCard = cardElement.dataset.card
         const iconSecondCard = cardElement.dataset.icon
-        if (
-          rangSecondCard === rangFirstCard &&
-          iconSecondCard === iconFirstCard
-        ) {
-          // добавить функцию выигрыша
+        
+        if (rangSecondCard === rangFirstCard && iconSecondCard === iconFirstCard) 
+        {  
           result = 1
         } else {
           result = 0
+          celebrationFunction(result)
         }
+
+        
+      }
+      if (openCardNumber === (playCards*2)) {
         celebrationFunction(result)
       }
+
     })
   }
   timerFunction()
