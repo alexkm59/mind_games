@@ -102,7 +102,6 @@ export const mineGameField = (difficultLevel: string) => {
   return { totalRandCards }
 }
 
-
 // Функция закрытия карт
 const closeCardFunction = (playCards: number) => {
   const cardElements: NodeListOf<Element> =
