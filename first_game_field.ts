@@ -107,7 +107,7 @@ export const mineGameField = (difficultLevel: string) => {
 // module.exports = { mineGameField }
 
 // Функция закрытия карт
-const closeCardFunction = (playCards:number) => {
+const closeCardFunction = (playCards: number) => {
   const cardElements: NodeListOf<Element> =
     document.querySelectorAll(".card-open")
   const cardInElements: NodeListOf<Element> =
@@ -121,7 +121,7 @@ const closeCardFunction = (playCards:number) => {
   }
   gamePlayFunction(playCards)
 }
-const gamePlayFunction = (playCards:number) => {
+const gamePlayFunction = (playCards: number) => {
   // let openCardCount = 0;
   let openCardNumber = 0
   let rangFirstCard: string = ""
@@ -146,21 +146,20 @@ const gamePlayFunction = (playCards:number) => {
       if (openCardNumber % 2 === 0) {
         const rangSecondCard = cardElement.dataset.card
         const iconSecondCard = cardElement.dataset.icon
-        
-        if (rangSecondCard === rangFirstCard && iconSecondCard === iconFirstCard) 
-        {  
+
+        if (
+          rangSecondCard === rangFirstCard &&
+          iconSecondCard === iconFirstCard
+        ) {
           result = 1
         } else {
           result = 0
           celebrationFunction(result)
         }
-
-        
       }
-      if (openCardNumber === (playCards*2)) {
+      if (openCardNumber === playCards * 2) {
         celebrationFunction(result)
       }
-
     })
   }
   timerFunction()
